@@ -1,0 +1,17 @@
+name: Validate WordPress Commerce
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+      - name: Validate project
+        run: bash commerce-platform/scripts/validate.sh
