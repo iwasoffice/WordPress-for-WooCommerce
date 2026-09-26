@@ -6,7 +6,6 @@ final class IWAS_Commerce_PWA {
 		add_action( 'init', array( __CLASS__, 'rewrite' ) );
 		add_action( 'template_redirect', array( __CLASS__, 'serve' ) );
 		add_action( 'wp_head', array( __CLASS__, 'head' ), 2 );
-		register_activation_hook( IWAS_COMMERCE_CORE_DIR . 'iwas-commerce-core.php', array( __CLASS__, 'activate' ) );
 	}
 
 	public static function activate() {
@@ -15,8 +14,8 @@ final class IWAS_Commerce_PWA {
 	}
 
 	public static function rewrite() {
-		add_rewrite_rule( '^manifest\.webmanifest$', 'index.php?iwas_manifest=1', 'top' );
-		add_rewrite_rule( '^iwas-sw\.js$', 'index.php?iwas_sw=1', 'top' );
+		add_rewrite_rule( '^manifest\\.webmanifest$', 'index.php?iwas_manifest=1', 'top' );
+		add_rewrite_rule( '^iwas-sw\\.js$', 'index.php?iwas_sw=1', 'top' );
 		add_rewrite_tag( '%iwas_manifest%', '1' );
 		add_rewrite_tag( '%iwas_sw%', '1' );
 	}
