@@ -1,0 +1,23 @@
+name: Validate WordPress Commerce
+
+on:
+  push:
+    paths:
+      - 'commerce-platform/**'
+      - '.github/workflows/commerce-platform-validate.yml'
+  pull_request:
+    paths:
+      - 'commerce-platform/**'
+      - '.github/workflows/commerce-platform-validate.yml'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+      - name: Validate commerce platform
+        run: bash commerce-platform/scripts/validate.sh
